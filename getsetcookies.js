@@ -1,3 +1,4 @@
+// Setting the cookie
 function setCookie (cname,cvalue,exdays) {
   let d = new Date();
   d.setTime(d.getTime() + (exdays*24*60*60*1000));
@@ -5,6 +6,7 @@ function setCookie (cname,cvalue,exdays) {
   document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
 
+// Getting the cookie
 function getCookie (cname) {
   let name = cname + "=";
   let decodedCookie = decodeURIComponent(document.cookie);
@@ -21,15 +23,8 @@ function getCookie (cname) {
   return "";
 }
 
-function checkCookie() {
-
-    // const queryString = window.location.search;
-    // const urlParams = new URLSearchParams(queryString);
-    // const affid = urlParams.get('affid');
-    // var url = "app.amzpecty.com/login?affid=user";
-    // url = url.replace("?", ''); // remove the ?
-    // url = url.split('?affid=')[1];
-    // alert("The affid is " +newUrl);
+// Getting the parameter from the URL and adding it to the cookie
+function addCookie() {
 
     let affid = getCookie("amzpecty-affiliate");
     if (affid != "") {
