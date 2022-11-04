@@ -1,8 +1,9 @@
+<script type="text/javascript">
 // Setting the cookie
 function setCookie (cname,cvalue,exdays) {
   let d = new Date();
   d.setTime(d.getTime() + (exdays*24*60*60*1000));
-  let expires = "expires=" + d.toUTCString();
+  let expires = "expires=" + d.toGMTString();
   document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
 
@@ -25,9 +26,9 @@ function getCookie (cname) {
 
 // Getting the parameter from the URL and adding it to the cookie
 function addCookie() {
-
     let affid = getCookie("amzpecty-affiliate");
-    if (affid != "") {
+    
+	if (affid != "") {
         //alert("The amzpecty-affiliate is " + affid);
     }  else {
         const queryString = window.location.search;
@@ -36,20 +37,8 @@ function addCookie() {
         setCookie("amzpecty-affiliate", affid, 365);
         //alert("The amzpecty-affiliate is " + affid);
     }
-
-  appendCookies();
-     
+	appendCookies();
 }
-
-// function appendCookie(){
-// 	let affid = getCookie("amzpecty-affiliate");
-	
-// 	const parser = new URL(window.location);
-// 	parser.searchParams.append('affid', '' +affid);
-// 	window.history.replaceState(null, null, parser);
-// }
-
-// Grab all append functions
 function appendCookies(){
   var buyBtn = document.querySelectorAll('.eael-pricing-item a');
   buyBtn.forEach(appendBuyCookies);
@@ -57,18 +46,27 @@ function appendCookies(){
   var loginBtn = document.querySelectorAll('.loginBtn a');
   loginBtn.forEach(appendLogCookies);
 }
-// Append Cookie in the Login Button
+// Append Cookie in the Buy Button
 function appendBuyCookies(buyBtn) {
   let affid = getCookie("amzpecty-affiliate"); 
   var url = new URL(buyBtn);
-   url.searchParams.append('affid', affid);
-   buyBtn.setAttribute('href', url);
+	if (affid == "null") {
+		buyBtn.setAttribute('href', url);
+	}else {
+		url.searchParams.append('affid', affid);
+   		buyBtn.setAttribute('href', url);
+	}
 }
 
 // Append Cookie in the Login Button
 function appendLogCookies(loginBtn){
   let affid = getCookie("amzpecty-affiliate"); 
   var url = new URL(loginBtn);
-  url.searchParams.append('affid', affid);
-  loginBtn.setAttribute('href', url);
+	if (affid == "null") {
+		loginBtn.setAttribute('href', url);
+	}else {
+		url.searchParams.append('affid', affid);
+   		loginBtn.setAttribute('href', url);
+	}
 }
+</script>
