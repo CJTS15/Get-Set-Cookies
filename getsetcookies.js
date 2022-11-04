@@ -52,7 +52,7 @@ function appendBuyCookies(buyBtn) {
   var url = new URL(buyBtn);
 	if (affid == "null") {
 		buyBtn.setAttribute('href', url);
-	}else {
+	} else {
 		url.searchParams.append('affid', affid);
    		buyBtn.setAttribute('href', url);
 	}
@@ -64,7 +64,7 @@ function appendLogCookies(loginBtn){
   var url = new URL(loginBtn);
 	if (affid == "null") {
 		loginBtn.setAttribute('href', url);
-	}else {
+	} else {
 		url.searchParams.append('affid', affid);
    		loginBtn.setAttribute('href', url);
 	}
