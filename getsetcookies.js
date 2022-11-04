@@ -28,13 +28,47 @@ function addCookie() {
 
     let affid = getCookie("amzpecty-affiliate");
     if (affid != "") {
-        alert("The amzpecty-affiliate is " + affid);
+        //alert("The amzpecty-affiliate is " + affid);
     }  else {
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         const affid = urlParams.get('affid');
         setCookie("amzpecty-affiliate", affid, 365);
-        alert("The amzpecty-affiliate is " + affid);
+        //alert("The amzpecty-affiliate is " + affid);
     }
+
+  appendCookies();
      
+}
+
+// function appendCookie(){
+// 	let affid = getCookie("amzpecty-affiliate");
+	
+// 	const parser = new URL(window.location);
+// 	parser.searchParams.append('affid', '' +affid);
+// 	window.history.replaceState(null, null, parser);
+// }
+
+// Grab all append functions
+function appendCookies(){
+  var buyBtn = document.querySelectorAll('.eael-pricing-item a');
+  buyBtn.forEach(appendBuyCookies);
+
+  var loginBtn = document.querySelectorAll('.loginBtn a');
+  loginBtn.forEach(appendLogCookies);
+}
+// Append Cookie in the Login Button
+function appendBuyCookies(buyBtn) {
+  let affid = getCookie("amzpecty-affiliate"); 
+  var url = new URL(buyBtn);
+   url.searchParams.append('affid', affid);
+   buyBtn.setAttribute('href', url);
+}
+
+// Append Cookie in the Login Button
+function appendLogCookies(loginBtn){
+  let affid = getCookie("amzpecty-affiliate"); 
+  var url = new URL(loginBtn);
+  url.searchParams.append('affid', affid);
+  loginBtn.setAttribute('href', url);
 }
