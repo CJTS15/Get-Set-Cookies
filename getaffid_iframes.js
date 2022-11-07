@@ -6,12 +6,12 @@ const affid = urlParams.get('affid');
 
 console.log(affid);
 
-if (affid != "") {
-		createIframe();
-		appendIframe();
-    appendButtons();
+if (affid === null) {
+	console.log("affid is null");
 } else {
-		console.log("Iframe has been created already!");
+	createIframe();
+	appendIframe();
+    	appendButtons();
 }
 
 // Create iframe
