@@ -1,7 +1,9 @@
 // Getting the affid in the URL Params
 //const queryString = new URL('https://app.amzpecty.com/login?affid=lloyd');
+//const urlParams = new URLSearchParams(queryString.search);
+
 const queryString = window.location.search;
-const urlParams = new URLSearchParams(queryString.search);
+const urlParams = new URLSearchParams(queryString);
 const affid = urlParams.get('affid');
 
 console.log(affid);
