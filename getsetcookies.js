@@ -1,4 +1,3 @@
-<script type="text/javascript">
 // Setting the cookie
 function setCookie (cname,cvalue,exdays) {
   let d = new Date();
@@ -39,6 +38,8 @@ function addCookie() {
     }
 	appendCookies();
 }
+
+// Append Cookie 
 function appendCookies(){
   var buyBtn = document.querySelectorAll('.eael-pricing-item a');
   buyBtn.forEach(appendBuyCookies);
@@ -46,7 +47,8 @@ function appendCookies(){
   var loginBtn = document.querySelectorAll('.loginBtn a');
   loginBtn.forEach(appendLogCookies);
 }
-// Append Cookie in the Buy Button
+
+// Append Cookie to the Buy Button
 function appendBuyCookies(buyBtn) {
   let affid = getCookie("amzpecty-affiliate"); 
   var url = new URL(buyBtn);
@@ -58,7 +60,7 @@ function appendBuyCookies(buyBtn) {
 	}
 }
 
-// Append Cookie in the Login Button
+// Append Cookie to the Login Button
 function appendLogCookies(loginBtn){
   let affid = getCookie("amzpecty-affiliate"); 
   var url = new URL(loginBtn);
@@ -69,4 +71,3 @@ function appendLogCookies(loginBtn){
    		loginBtn.setAttribute('href', url);
 	}
 }
-</script>
